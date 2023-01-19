@@ -10,6 +10,11 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# env, package lock and node modules
+*.env
+/node_modules/
+package-lock.json
+
 # Package Files #
 *.jar
 *.war
