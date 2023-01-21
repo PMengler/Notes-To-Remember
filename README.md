@@ -25,7 +25,7 @@ In order to run the applicaton, run the following command in the integrated term
 
 After following the "installation" steps, the front end is very user friendly and intuitive. No description necessary.
 
-![alt text](img)
+![](./Main/assets/Screenshot%202023-01-21%20at%201.25.27%20PM.png)
 
 ## Contributing
 
@@ -35,15 +35,11 @@ Nobody
 
 Testing is not applicable on this project. However, typically you would run the following command in the integrated terminal:
 
-    No tests required
+    npm test, however no tests are required
 
 ## Questions
 
-GitHub Url: https://github.com/PMengler
-
-Please Contact me via email only.
-
-Email Address: email
+GitHub Url: https://github.com/PMengler/Notes-To-Remember
 
 ## License
 

@@ -3,19 +3,19 @@ const util = require('util');
 
 const { v4: uuidv4 } = require('uuid');
 
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
+const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
-class StoreNotes {
+class StoredNotes {
     read() {
-        return readFileAsync('./db/db.json', 'utf8');
+        return readFile('./db/db.json', 'utf8');
     }
 
-    write(note) {
-        return writeFileAsync('./db/db.json', JSON.stringify(note));
+    write(data) {
+        return writeFile('./db/db.json', JSON.stringify(data));
     }
 
-    getNotes() {
+    getAllNotes() {
         return this.read().then((notes) => {
 
             let parsedNotes;
@@ -29,30 +29,30 @@ class StoreNotes {
         })
     };
 
-    addNote(note) {
+    addNewNote(note) {
         const { title, text } = note;
 
         if (!title || !text) {
             throw new Error('Please add a title and some text to your note.');
         }
 
-        const newNote = {
+        const nextNote = {
             title,
             text,
             id: uuidv4(),
         };
         
-        return this.getNotes()
-        .then((notes) => [...notes, newNote])
+        return this.getAllNotes()
+        .then((notes) => [...notes, nextNote])
         .then((savedNotes) => this.write(savedNotes))
-        .then(() => newNote);
+        .then(() => nextNote);
     }
 
-    removeNote(id) {
-        return this.getNotes()
+    removeNoteId(id) {
+        return this.getAllNotes()
         .then((notes) => notes.filter((note) => note.id!== id))
-        .then((filteredNotes) => this.write(filteredNotes))
+        .then((justNotes) => this.write(justNotes))
     }
 }
 
-module.exports = new StoreNotes();
+module.exports = new StoredNotes();
