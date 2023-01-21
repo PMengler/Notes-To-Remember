@@ -1,29 +1,22 @@
-const expressRouter = require('express').Router();
-const store = require('../db/store');
+const noteRoute = require('express').Router();
+const storeJS = require('./store.js');
 
-// GET Route for retrieving all the notes
-expressRouter.get('/notes', (req, res) => {
-  store
-  .getNotes()
-  .then((notes) => {
-    return res.json(notes);
-  })
-  .catch((err) => res.status(500).json(err));
+noteRoute.get('/notes', (req, res) => {
+  storeJS
+  .getNotes().then((data) => res.json(data));
 });
 
 // POST Route for a new UX/UI note
-expressRouter.post('/notes', (req, res) => {
-  store
-  .addNote(req.body)
-  .then((note) => res.json(note))
-  .catch((err) => res.status(500).json(err))
+noteRoute.post('/notes', (req, res) => {
+  storeJS
+  .addNote(req.body).then((note) => res.json(note))
+  .catch((err) => res.status(500).json(err));
 });
 
-expressRouter.delete('notes/:id', (req, res) => {
-  store
-  .removeNote(req.params.id)
-  .then(() => res.json({ok: true}))
+noteRoute.delete('/notes/:id', (req, res) => {
+  storeJS
+  .removeNote(req.params.id).then(() => res.json({ok: true}))
   .catch((err) => res.status(500).json(err));
 })
 
-module.exports = expressRouter;
+module.exports = noteRoute;
