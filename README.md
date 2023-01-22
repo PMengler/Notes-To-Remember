@@ -25,7 +25,7 @@ In order to run the applicaton, run the following command in the integrated term
 
 After following the "installation" steps, the front end is very user friendly and intuitive. No description necessary.
 
-![](./Main/assets/Screenshot%202023-01-21%20at%201.25.27%20PM.png)
+![](./assets/Screenshot%202023-01-21%20at%201.25.27%20PM.png)
 
 ## Contributing
 
