@@ -14,11 +14,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', html);
 app.use('/api', api);
 
-app.use(express.static('public'));
+app.use(express.static('docs'));
 
 // GET Route for notes page
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
+  res.sendFile(path.join(__dirname, './docs/notes.html'))
 );
 
 // GET route for API
@@ -26,7 +26,7 @@ app.get('/api/notes', (req, res) => res.json(noteData));
 
 // GET Route for homepage
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, './docs/index.html'))
 );
 
 app.listen(PORT, () =>
